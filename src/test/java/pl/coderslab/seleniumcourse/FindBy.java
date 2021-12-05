@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.UUID;
+
 // Wyszukaj elementy za pomocą lokalizatora by.id
 //Na stronie https://hotel-testlab.coderslab.pl/en/ zidentyfikuj następująca pola/przyciski za pomocą lokalizatora by.id:
 //
@@ -38,14 +40,28 @@ public class FindBy {
         // todo finish
     }
 
+    @Test
+    public void shouldFindByClassName() {
+        driver.get("https://hotel-testlab.coderslab.pl/en/");
+        WebElement signInBtn = driver.findElement(By.className("hide_xs"));
+        signInBtn.click();
+        WebElement emailInput = driver.findElement(By.id("email_create"));
+        String randomEmail = UUID.randomUUID() + "@mail.pl";
+        emailInput.sendKeys(randomEmail);
+        WebElement createAccountBtn = driver.findElement(By.id("SubmitCreate"));
+        createAccountBtn.click();
+        WebElement radioMr = driver.findElement(By.cssSelector("input#id_gender1"));
+        radioMr.click();
+    }
+
     @BeforeEach
     public void beforeEach() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         this.driver = new ChromeDriver();
     }
 
-    @AfterEach
-    public void afterEach() {
-        this.driver.quit();
-    }
+//    @AfterEach
+//    public void afterEach() {
+//        this.driver.quit();
+//    }
 }
