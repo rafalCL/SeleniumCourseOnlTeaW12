@@ -1,5 +1,6 @@
 package pl.coderslab.seleniumcourse;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -30,5 +31,10 @@ public class FirstJunitSeleniumTest {
     public void beforeEach() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         this.driver = new ChromeDriver();
+    }
+
+    @AfterEach
+    public void afterEach() {
+        this.driver.quit();
     }
 }
