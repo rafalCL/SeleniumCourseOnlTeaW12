@@ -1,6 +1,7 @@
 package pl.coderslab.seleniumcourse;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -48,11 +49,17 @@ public class FindBy {
         signInBtn.click();
         WebElement emailInput = driver.findElement(By.id("email_create"));
         String randomEmail = UUID.randomUUID() + "@mail.pl";
+        emailInput.clear();
         emailInput.sendKeys(randomEmail);
         WebElement createAccountBtn = driver.findElement(By.id("SubmitCreate"));
         createAccountBtn.click();
         WebElement radioMr = driver.findElement(By.cssSelector("input#id_gender1"));
         radioMr.click();
+        WebElement firstNameInput = driver.findElement(By.id("customer_firstname"));
+        if(!firstNameInput.isDisplayed() || !firstNameInput.isEnabled()) {
+            Assertions.fail("element not interactable!");
+        }
+        firstNameInput.sendKeys("ala");
     }
 
     @BeforeEach
