@@ -28,5 +28,8 @@ public class AssertionsExample {
         assertEquals(3.14, 3.14);
         assertEquals(true, true);
         assertEquals("napis", "napis");
+        int[] arr1 = {1,2,42};
+        int[] arr2 = {1,2,42};
+        assertArrayEquals(arr1, arr2);
     }
 }
