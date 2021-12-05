@@ -60,6 +60,26 @@ public class FindBy {
             Assertions.fail("element not interactable!");
         }
         firstNameInput.sendKeys("ala");
+        WebElement lastNameInput = driver.findElement(By.id("customer_lastname"));
+        if(!lastNameInput.isDisplayed() || !lastNameInput.isEnabled()) {
+            Assertions.fail("element not interactable!");
+        }
+        lastNameInput.sendKeys("alowska");
+        WebElement passwordInput = driver.findElement(By.id("passwd"));
+        if(!passwordInput.isDisplayed() || !passwordInput.isEnabled()) {
+            Assertions.fail("element not interactable!");
+        }
+        passwordInput.sendKeys("password");
+        WebElement days = driver.findElement(By.id("days"));
+        days.sendKeys("9");
+        WebElement months = driver.findElement(By.id("months"));
+        months.sendKeys("January");
+        WebElement years = driver.findElement(By.id("years"));
+        years.sendKeys("2000");
+        WebElement newsletter = driver.findElement(By.id("newsletter"));
+        newsletter.click();
+        WebElement submit = driver.findElement(By.id("submitAccount"));
+        submit.click();
     }
 
     @BeforeEach
