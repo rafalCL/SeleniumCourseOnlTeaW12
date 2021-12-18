@@ -48,6 +48,17 @@ public class HotelTest {
         assertTrue(myAccountPage.isAccountCreationConfirmed());
     }
 
+    @Test
+    public void shouldSearchHotelOnLandingPage() {
+        // Sekwencja kroków:
+        //
+        //logowanie użytkownika : LoginPage.loginAsTestUser() test123@mail.pl
+        //wyszukiwarka na stronie głównej
+        //wyszukaj dowolny hotel.
+        LandingPage lp = new LandingPage(driver);
+        lp.searchHotel("","","","");
+    }
+
     @BeforeEach
     public void beforeEach() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");

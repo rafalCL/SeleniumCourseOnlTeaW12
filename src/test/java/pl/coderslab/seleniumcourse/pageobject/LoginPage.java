@@ -30,4 +30,8 @@ public class LoginPage {
         WebElement createAccountBtn = driver.findElement(By.id("SubmitCreate"));
         createAccountBtn.click();
     }
+
+    public void loginAsTestUser() {
+        //     test123@mail.pl superPassword123
+    }
 }

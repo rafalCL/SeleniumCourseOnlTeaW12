@@ -17,4 +17,9 @@ public class LandingPage {
         WebElement signInBtn = driver.findElement(By.className("hide_xs"));
         signInBtn.click();
     }
+
+    public void searchHotel(String location, String name, String checkinDate, String checkoutDate) {
+        // fill form
+        // click search now
+    }
 }
