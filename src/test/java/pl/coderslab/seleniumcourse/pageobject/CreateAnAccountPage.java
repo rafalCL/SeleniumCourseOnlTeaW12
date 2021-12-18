@@ -1,5 +1,6 @@
 package pl.coderslab.seleniumcourse.pageobject;
 
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,6 +28,7 @@ public class CreateAnAccountPage {
 
         WebElement emailInput = driver.findElement(By.id("email"));
         if (!userData.getEmail().equals("")) {
+            emailInput.clear();
             emailInput.sendKeys(userData.getEmail());
         }
 
@@ -53,5 +55,20 @@ public class CreateAnAccountPage {
     public void clickRegister() {
         WebElement submit = driver.findElement(By.id("submitAccount"));
         submit.click();
+    }
+
+    public boolean areMandatoryInputsAccessible() {
+        WebElement firstNameInput = driver.findElement(By.id("customer_firstname"));
+        boolean isFirstNameInputInteractable = firstNameInput.isDisplayed() && firstNameInput.isEnabled();
+
+        WebElement lastNameInput = driver.findElement(By.id("customer_lastname"));
+        boolean isLastNameInputInteractable = lastNameInput.isDisplayed() && lastNameInput.isEnabled();
+
+        WebElement passwordInput = driver.findElement(By.id("passwd"));
+        boolean isPasswordInputInteractable = passwordInput.isDisplayed() && passwordInput.isEnabled();
+
+        return isFirstNameInputInteractable
+                && isLastNameInputInteractable
+                && isPasswordInputInteractable;
     }
 }
