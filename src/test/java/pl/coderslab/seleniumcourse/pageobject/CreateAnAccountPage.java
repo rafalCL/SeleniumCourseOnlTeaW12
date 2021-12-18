@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class CreateAnAccountPage {
-    private WebDriver driver;
     @FindBy(id = "#id_gender1")
     private WebElement radioMr;
     @FindBy(css = "input#id_gender2")
