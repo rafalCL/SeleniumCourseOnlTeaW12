@@ -17,8 +17,10 @@ public class HotelTest {
     @Test
     public void shouldCreateNewAccount() {
         driver.get("https://hotel-testlab.coderslab.pl/en/");
-        WebElement signInBtn = driver.findElement(By.className("hide_xs"));
-        signInBtn.click();
+
+        LandingPage landingPage = new LandingPage(driver);
+        landingPage.clickSignIn();
+
         WebElement emailInput = driver.findElement(By.id("email_create"));
         String randomEmail = UUID.randomUUID() + "@mail.pl";
         emailInput.clear();
