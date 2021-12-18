@@ -15,22 +15,7 @@ public class HotelTest {
     WebDriver driver;
 
     @Test
-    public void shouldFindById() {
-        driver.get("https://hotel-testlab.coderslab.pl/en/");
-        WebElement hotelLocationInput = driver.findElement(By.id("hotel_location"));
-        WebElement searchNowBtn = driver.findElement(By.id("search_room_submit"));
-        // todo finish
-    }
-
-    @Test
-    public void shouldFindByName() {
-        driver.get("https://hotel-testlab.coderslab.pl/en/");
-        WebElement hotelLocationInput = driver.findElement(By.name("hotel_location"));
-        // todo finish
-    }
-
-    @Test
-    public void shouldFindByClassName() {
+    public void shouldCreateNewAccount() {
         driver.get("https://hotel-testlab.coderslab.pl/en/");
         WebElement signInBtn = driver.findElement(By.className("hide_xs"));
         signInBtn.click();
