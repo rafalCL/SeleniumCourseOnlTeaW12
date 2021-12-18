@@ -1,48 +1,58 @@
 package pl.coderslab.seleniumcourse.pageobject;
 
-import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class CreateAnAccountPage {
     private WebDriver driver;
+    @FindBy(id = "#id_gender1")
+    private WebElement radioMr;
+    @FindBy(css = "input#id_gender2")
+    private WebElement radioMrs;
+    @FindBy(id = "customer_firstname")
+    private WebElement firstNameInput;
+    @FindBy(id = "customer_lastname")
+    private WebElement lastNameInput;
+    @FindBy(id = "email")
+    private WebElement emailInput;
+    @FindBy(id = "passwd")
+    private WebElement passwordInput;
+    @FindBy(id = "days")
+    private WebElement days;
+    @FindBy(id = "months")
+    private WebElement months;
+    @FindBy(id = "years")
+    private WebElement years;
+    @FindBy(id = "newsletter")
+    private WebElement newsletterCheckbox;
+    @FindBy(id = "optin")
+    private WebElement specialOffersCheckbox;
+    @FindBy(id = "submitAccount")
+    private WebElement registerButton;
 
     public CreateAnAccountPage(WebDriver driver) {
-        this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     public void fillForm(UserData userData) {
-        WebElement radioMr = driver.findElement(By.cssSelector("input#id_gender1"));
-        WebElement radioMrs = driver.findElement(By.cssSelector("input#id_gender2"));
         if (userData.isMr()) {
             radioMr.click();
         } else {
             radioMrs.click();
         }
-
-        WebElement firstNameInput = driver.findElement(By.id("customer_firstname"));
         firstNameInput.sendKeys(userData.getFirstName());
-        WebElement lastNameInput = driver.findElement(By.id("customer_lastname"));
         lastNameInput.sendKeys(userData.getLastName());
-
-        WebElement emailInput = driver.findElement(By.id("email"));
         if (!userData.getEmail().equals("")) {
             emailInput.clear();
             emailInput.sendKeys(userData.getEmail());
         }
-
-        WebElement passwordInput = driver.findElement(By.id("passwd"));
         passwordInput.sendKeys(userData.getPassword());
-        WebElement days = driver.findElement(By.id("days"));
         days.sendKeys(String.valueOf(userData.getDays()));
-        WebElement months = driver.findElement(By.id("months"));
         months.sendKeys(userData.getMonth().name());
-        WebElement years = driver.findElement(By.id("years"));
         years.sendKeys(String.valueOf(userData.getYears()));
-        WebElement newsletterCheckbox = driver.findElement(By.id("newsletter"));
         setCheckbox(newsletterCheckbox, userData.isNewsletter());
-        WebElement specialOffersCheckbox = driver.findElement(By.id("optin"));
         setCheckbox(specialOffersCheckbox, userData.isGetSpecialOffers());
     }
 
@@ -53,18 +63,12 @@ public class CreateAnAccountPage {
     }
 
     public void clickRegister() {
-        WebElement submit = driver.findElement(By.id("submitAccount"));
-        submit.click();
+        registerButton.click();
     }
 
     public boolean areMandatoryInputsAccessible() {
-        WebElement firstNameInput = driver.findElement(By.id("customer_firstname"));
         boolean isFirstNameInputInteractable = firstNameInput.isDisplayed() && firstNameInput.isEnabled();
-
-        WebElement lastNameInput = driver.findElement(By.id("customer_lastname"));
         boolean isLastNameInputInteractable = lastNameInput.isDisplayed() && lastNameInput.isEnabled();
-
-        WebElement passwordInput = driver.findElement(By.id("passwd"));
         boolean isPasswordInputInteractable = passwordInput.isDisplayed() && passwordInput.isEnabled();
 
         return isFirstNameInputInteractable
@@ -73,7 +77,6 @@ public class CreateAnAccountPage {
     }
 
     public String getEmail() {
-        WebElement emailInput = driver.findElement(By.id("email"));
         return emailInput.getAttribute("value");
     }
 }
