@@ -21,12 +21,10 @@ public class HotelTest {
         LandingPage landingPage = new LandingPage(driver);
         landingPage.clickSignIn();
 
-        WebElement emailInput = driver.findElement(By.id("email_create"));
-        String randomEmail = UUID.randomUUID() + "@mail.pl";
-        emailInput.clear();
-        emailInput.sendKeys(randomEmail);
-        WebElement createAccountBtn = driver.findElement(By.id("SubmitCreate"));
-        createAccountBtn.click();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.fillCreateAnAccountRandomEmail();
+        loginPage.clickCreateAnAccount();
+
         WebElement radioMr = driver.findElement(By.cssSelector("input#id_gender1"));
         radioMr.click();
         WebElement firstNameInput = driver.findElement(By.id("customer_firstname"));
