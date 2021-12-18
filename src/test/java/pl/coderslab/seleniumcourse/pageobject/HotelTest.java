@@ -7,7 +7,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 import java.time.Month;
+import java.util.UUID;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class HotelTest {
@@ -21,7 +23,8 @@ public class HotelTest {
         landingPage.clickSignIn();
 
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.fillCreateAnAccountRandomEmail();
+        String randomEmail = UUID.randomUUID() + "@mail.pl";
+        loginPage.fillCreateAnAccountEmail(randomEmail);
         loginPage.clickCreateAnAccount();
 
         UserData userData = new UserData()
@@ -38,8 +41,11 @@ public class HotelTest {
 
         CreateAnAccountPage createAnAccountPage = new CreateAnAccountPage(driver);
         assertTrue(createAnAccountPage.areMandatoryInputsAccessible(), "element not interactable!");
+        assertEquals(randomEmail, createAnAccountPage.getEmail());
         createAnAccountPage.fillForm(userData);
         createAnAccountPage.clickRegister();
+        MyAccountPage myAccountPage = new MyAccountPage(driver);
+        assertTrue(myAccountPage.isAccountCreationConfirmed());
     }
 
     @BeforeEach

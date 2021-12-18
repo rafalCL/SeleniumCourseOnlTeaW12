@@ -71,4 +71,9 @@ public class CreateAnAccountPage {
                 && isLastNameInputInteractable
                 && isPasswordInputInteractable;
     }
+
+    public String getEmail() {
+        WebElement emailInput = driver.findElement(By.id("email"));
+        return emailInput.getAttribute("value");
+    }
 }
