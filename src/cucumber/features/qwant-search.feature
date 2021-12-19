@@ -5,7 +5,7 @@ Feature: Qwant search
     When Search phrase "<searchPhrase>" entered in search input box
     And key enter pressed
     Then First <resultsCount> search results titles contain phrase "<searchPhrase>"
-Examples:
-      |searchPhrase         |resultsCount|
-      |W pustyni i w puszczy| 5          |
-      |Pharaoh              | 3          |
+    Examples:
+      | searchPhrase          | resultsCount |
+      | W pustyni i w puszczy | 5            |
+      | Pharaoh               | 3            |
