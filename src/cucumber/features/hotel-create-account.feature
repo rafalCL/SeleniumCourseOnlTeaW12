@@ -10,5 +10,5 @@ Feature: Hotel create account
 Examples: 
     |firstName|lastName   |isMr |password    |isNewsletter|isSpecialOffers|
     |ala      | alowska   |false|password    | true       | false         |
-    |ola      | romanowski|false|xyz123      | false      | true          |
-    |lua      | xiaojun   |false|heavyLift!  | true       | true          |
+    |adam     | romanowski|true |xyz123      | false      | true          |
+    |lu       | xiaojun   |true |heavyLift!  | true       | true          |
