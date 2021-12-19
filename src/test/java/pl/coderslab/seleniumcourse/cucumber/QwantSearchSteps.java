@@ -18,29 +18,29 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class QwantSearchSteps {
     private WebDriver driver;
 
-    @Given("^Web page https://www.qwant.com/ opened in browser$")
-    public void openBrowser() {
+    @Given("^Web page (.*) opened in browser$")
+    public void openBrowser(String url) {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         this.driver = new ChromeDriver();
         this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(16));
-        this.driver.get("https://www.qwant.com/");
+        this.driver.get(url);
     }
-    @When("^Search phrase \"W pustyni i w puszczy\" entered in search input box$")
-    public void enterSearchPhrase() {
+    @When("^Search phrase \"(.*)\" entered in search input box$")
+    public void enterSearchPhrase(String searchPhrase) {
         WebElement inputBox = driver.findElement(By.name("q"));
         inputBox.clear();
-        inputBox.sendKeys("W pustyni i w puszczy");
+        inputBox.sendKeys(searchPhrase);
     }
     @And("^key enter pressed$")
     public void pressEnter() {
         WebElement inputBox = driver.findElement(By.name("q"));
         inputBox.sendKeys(Keys.ENTER);
     }
-    @Then("^First 3 search results titles contain phrase \"W pustyni i w puszczy\"$")
-    public void checkSearchResults() {
+    @Then("^First 3 search results titles contain phrase \"(.*)\"$")
+    public void checkSearchResults(String searchPhrase) {
         List<WebElement> searchResults = driver.findElements(By.cssSelector("div.WebResult-module__container___18c35 a"));
-        assertTrue(searchResults.get(0).getText().contains("W pustyni i w puszczy"));
-        assertTrue(searchResults.get(1).getText().contains("W pustyni i w puszczy"));
-        assertTrue(searchResults.get(2).getText().contains("W pustyni i w puszczy"));
+        assertTrue(searchResults.get(0).getText().contains(searchPhrase));
+        assertTrue(searchResults.get(1).getText().contains(searchPhrase));
+        assertTrue(searchResults.get(2).getText().contains(searchPhrase));
     }
 }
