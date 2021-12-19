@@ -47,9 +47,6 @@ public class HotelRegisterUserSteps {
                 .setMr(isMr)
                 .setEmail("")
                 .setPassword(password)
-//                .setDays(9)
-//                .setMonth(Month.JANUARY)
-//                .setYears(2000)
                 .setNewsletter(isNewsletter)
                 .setGetSpecialOffers(isSpecialOffers);
 
@@ -69,36 +66,6 @@ public class HotelRegisterUserSteps {
         MyAccountPage myAccountPage = new MyAccountPage(driver);
         assertTrue(myAccountPage.isAccountCreationConfirmed());
     }
-
-//    @Test
-//    public void shouldCreateNewAccount() {
-//        driver.get("https://hotel-testlab.coderslab.pl/en/login?back=my-account");
-//
-//        LoginPage loginPage = new LoginPage(driver);
-//        String randomEmail = UUID.randomUUID() + "@mail.pl";
-//        loginPage.fillCreateAnAccountEmail(randomEmail);
-//        loginPage.clickCreateAnAccount();
-//
-//        UserData userData = new UserData()
-//                .setFirstName("ala")
-//                .setLastName("alowska")
-//                .setMr(false)
-//                .setEmail("")
-//                .setPassword("password")
-//                .setDays(9)
-//                .setMonth(Month.JANUARY)
-//                .setYears(2000)
-//                .setNewsletter(true)
-//                .setGetSpecialOffers(false);
-//
-//        CreateAnAccountPage createAnAccountPage = new CreateAnAccountPage(driver);
-//        assertTrue(createAnAccountPage.areMandatoryInputsAccessible(), "element not interactable!");
-//        assertEquals(randomEmail, createAnAccountPage.getEmail());
-//        createAnAccountPage.fillForm(userData);
-//        createAnAccountPage.clickRegister();
-//        MyAccountPage myAccountPage = new MyAccountPage(driver);
-//        assertTrue(myAccountPage.isAccountCreationConfirmed());
-//    }
 
 //    @AfterEach
 //    public void afterEach() {
