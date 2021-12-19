@@ -48,9 +48,9 @@ public class CreateAnAccountPage {
             emailInput.sendKeys(userData.getEmail());
         }
         passwordInput.sendKeys(userData.getPassword());
-        days.sendKeys(String.valueOf(userData.getDays()));
-        months.sendKeys(userData.getMonth().name());
-        years.sendKeys(String.valueOf(userData.getYears()));
+//        days.sendKeys(String.valueOf(userData.getDays()));
+//        months.sendKeys(userData.getMonth().name());
+//        years.sendKeys(String.valueOf(userData.getYears()));
         setCheckbox(newsletterCheckbox, userData.isNewsletter());
         setCheckbox(specialOffersCheckbox, userData.isGetSpecialOffers());
     }
