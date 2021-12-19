@@ -4,10 +4,18 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -65,6 +73,18 @@ public class HotelRegisterUserSteps {
     public void accountCreationConfirmed() {
         MyAccountPage myAccountPage = new MyAccountPage(driver);
         assertTrue(myAccountPage.isAccountCreationConfirmed());
+    }
+
+    @And("Take screenshot")
+    public void takeScreenshot() throws IOException {
+        TakesScreenshot screenshot = (TakesScreenshot)driver;
+//Take screenshot (will be saved in default location) and automatically removed after test
+        File tmpScreenshot = screenshot.getScreenshotAs(OutputType.FILE);
+//Copy the screenshot to desired location
+//Path to the location to save screenshot
+//(directory for screenshots MUST exist: C:\test-evidence) e.g.:
+        String currentDateTime = LocalDateTime.now().toString().replaceAll(":", "_");
+        Files.copy(tmpScreenshot.toPath(), Paths.get("C:", "test-evidence", "registration-success-evidence-12-"+currentDateTime+".png"));
     }
 
 //    @AfterEach

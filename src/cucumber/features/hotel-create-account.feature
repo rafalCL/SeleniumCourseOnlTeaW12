@@ -1,8 +1,14 @@
 Feature: Hotel create account
-  Scenario: Successful user account creation
+  Scenario Outline: Successful user account creation
     Given Login page opened: https://hotel-testlab.coderslab.pl/en/login?back=my-account
     When Unique email entered in 'email address' input box
     And Create an account button clicked
-    And Form filled with data: ala, alowska, false, password, true, false
+    And Form filled with data: <firstName>, <lastName>, <isMr>, <password>, <isNewsletter>, <isSpecialOffers>
     And Register button clicked
     Then User account creation success confirmation panel displayed
+    And Take screenshot
+Examples: 
+    |firstName|lastName   |isMr |password    |isNewsletter|isSpecialOffers|
+    |ala      | alowska   |false|password    | true       | false         |
+    |ola      | romanowski|false|xyz123      | false      | true          |
+    |lua      | xiaojun   |false|heavyLift!  | true       | true          |
