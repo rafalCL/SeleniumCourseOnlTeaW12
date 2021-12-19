@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -87,8 +88,8 @@ public class HotelRegisterUserSteps {
         Files.copy(tmpScreenshot.toPath(), Paths.get("C:", "test-evidence", "registration-success-evidence-12-"+currentDateTime+".png"));
     }
 
-//    @AfterEach
-//    public void afterEach() {
-//        this.driver.quit();
-//    }
+    @And("Close browser")
+    public void closeBrowser() {
+        this.driver.quit();
+    }
 }

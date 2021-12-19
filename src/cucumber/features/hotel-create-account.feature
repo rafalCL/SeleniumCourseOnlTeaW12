@@ -7,6 +7,7 @@ Feature: Hotel create account
     And Register button clicked
     Then User account creation success confirmation panel displayed
     And Take screenshot
+    And Close browser
 Examples: 
     |firstName|lastName   |isMr |password    |isNewsletter|isSpecialOffers|
     |ala      | alowska   |false|password    | true       | false         |
