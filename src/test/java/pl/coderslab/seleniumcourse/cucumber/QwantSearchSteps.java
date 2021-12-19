@@ -40,7 +40,7 @@ public class QwantSearchSteps {
     public void checkSearchResults(int count, String searchPhrase) {
         List<WebElement> searchResults = driver.findElements(By.cssSelector("div.WebResult-module__container___18c35 a"));
         for(int i=0; i<count; i++) {
-            assertTrue(searchResults.get(i).getText().contains(searchPhrase));
+            assertTrue(searchResults.get(i).getText().toLowerCase().contains(searchPhrase.toLowerCase()));
         }
     }
 }
