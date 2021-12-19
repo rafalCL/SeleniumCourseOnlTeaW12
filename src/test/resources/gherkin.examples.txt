@@ -1,0 +1,15 @@
+Zadania Gherkin
+Gherkin
+Przygotuj opisy scenariuszy:
+
+1. wyszukiwanie dowolnej frazy w wyszukiwarce Qwant,
+2. logowanie do portalu edukacyjnego Coders Lab https://lms.coderslab.pl
+3. uruchomienie pierwszej prezentacji z preworku Java na kursie testera automatyzującego.
+
+
+Ad 1. wyszukiwanie dowolnej frazy w wyszukiwarce Qwant,
+Scenario: Search for "W pustyni i w puszczy" in https://www.qwant.com/
+Given: Web page https://www.qwant.com/ opened in browser
+When: Search phrase "W pustyni i w puszczy" entered in search input box
+And: key enter pressed
+Then: First 3 search results titles contain phrase "W pustyni i w puszczy"
